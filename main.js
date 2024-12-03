@@ -87,13 +87,16 @@ window.addEventListener('load', () => {
   }
 });
 
-client
-      .get({
-        endpoint: 'works',
-      })
-      .then((res) => console.log(res));
-
-
+fetch("https://mfworksmicrocms.io/api/v1/works", {
+  headers: {
+    "X-MICROCMS-API-KEY": "vXK80n4r4mJt2vE06rsbKG9cVQ8eUA6485hS"
+  }
+})
+.then(res => res.json())
+.then(json => {
+  document.getElementById("title").innerHTML = json.title;
+  document.getElementById("body").innerHTML = json.body;
+})
 
 
 
