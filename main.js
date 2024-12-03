@@ -2,6 +2,16 @@ const ham = document.querySelector('.hamburger');
 const header = document.querySelector('.header');
 const aboutLink = document.querySelector('.header__navitem[href="#about"]');
 const links = document.querySelectorAll("header__navitem > a");
+const fetchImages = async () => {
+  const response = await fetch('https://mfworks.microcms.io/api/v1/works', {
+      headers: {
+          'X-API-KEY': 'vXK80n4r4mJt2vE06rsbKG9cVQ8eUA6485hS'
+      }
+  });
+  const data = await response.json();
+  return data.contents; // "contents"にギャラリーのデータが格納されている
+};
+
 
 // ハンバーガーメニューのクリックイベント
 ham.addEventListener('click', function(){
@@ -87,4 +97,19 @@ window.addEventListener('load', () => {
   }
 });
 
+const renderGallery = async () => {
+  const galleryContainer = document.getElementById('grid');
+  const images = await fetchImages();
 
+  images.forEach(item => {
+      // 画像要素を作成
+      const imageElement = document.createElement('img');
+      imageElement.src = item.image.url; // microCMSの画像URL
+      imageElement.alt = item.title;
+
+      // 画像をギャラリーコンテナに追加
+      galleryContainer.appendChild(imageElement);
+  });
+};
+
+renderGallery();
