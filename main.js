@@ -92,15 +92,11 @@ const fetchData = async () =>{
   headers: {
     "X-MICROCMS-API-KEY": "vXK80n4r4mJt2vE06rsbKG9cVQ8eUA6485hS"
   }
+});
+}
+
   const data = await response.json();
     console.log(data);
-})
-}
-.then(res => res.json())
-.then(json => {
-  document.getElementById("title").innerHTML = json.title;
-  document.getElementById("body").innerHTML = json.body;
-})
 
 
 
