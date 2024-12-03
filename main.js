@@ -98,7 +98,7 @@ window.addEventListener('load', () => {
 });
 
 const renderGallery = async () => {
-  const galleryContainer = document.getElementById('grid');
+  const galleryContainer = document.getElementById('gallery');
   const images = await fetchImages();
 
   images.forEach(item => {
