@@ -87,6 +87,12 @@ window.addEventListener('load', () => {
   }
 });
 
+client
+      .get({
+        endpoint: 'works',
+      })
+      .then((res) => console.log(res));
+
 
 
 
